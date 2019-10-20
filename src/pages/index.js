@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 
+const codeRef = useRef(null);
 const IndexPage = () => (
   <Layout>
     <div>
@@ -22,11 +23,11 @@ const IndexPage = () => (
                     </div>
                     <div class="form-group col-md-12">
                         <label for="code">Código do desafio</label>
-                        <input id="code" ref="code" name="challenge-code" type="number" class="form-control" maxlength="15" required="required" />
+                        <input id="code" ref={codeRef} name="challenge-code" type="number" class="form-control" maxlength="15" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <Link to="/challenge/"><button name="submit" type="submit" class="button primary" onClick={() => getChallenge(this.refs.code)}>Começar</button></Link>
+                    <Link to="/challenge/"><button name="submit" type="submit" class="button primary" onClick={() => getChallenge(codeRef.textInput)}>Começar</button></Link>
                 </div>
             </form>
         </div>
