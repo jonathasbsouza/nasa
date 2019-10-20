@@ -26,7 +26,7 @@ const IndexPage = () => (
                     </div>
                 </div>
                 <div class="form-group">
-                    <Link to="/challenge/"><button name="submit" type="submit" class="button primary">Começar</button></Link>
+                    <Link to="/challenge/"><button name="submit" type="submit" class="button primary" onClick={() => getChallenge(challenge-code)}>Começar</button></Link>
                 </div>
             </form>
         </div>
@@ -37,5 +37,14 @@ const IndexPage = () => (
   </Layout>
   
 )
+
+function getChallenge(code){
+  const axios = require('axios');
+
+  axios.get('https://nasa-quiz-api.herokuapp.com/challenges/' + code).then(resp => {
+      console.log(resp.data);
+      return resp.data
+  });
+}
 
 export default IndexPage
